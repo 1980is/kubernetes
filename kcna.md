@@ -92,19 +92,4 @@ Let's use the Minikube Ingress addon. \
 Let's first setup a Pod to play around with. \
 ``kubectl create deployment nginxopen --image=nginx`` \
 Let's expose a service/port for that app. \
-``kubectl expose deployment nginxopen --port=80`` \
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+``kubectl expose deployment nginxopen --port=80``
