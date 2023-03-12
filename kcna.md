@@ -92,4 +92,10 @@ Let's use the Minikube Ingress addon. \
 Let's first setup a Pod to play around with. \
 ``kubectl create deployment nginxopen --image=nginx`` \
 Let's expose a service/port for that app. \
-``kubectl expose deployment nginxopen --port=80``
+``kubectl expose deployment nginxopen --port=80`` \
+``kubectl get services`` If it's a "CLUSTER-IP" you can't directly connect to port 80. You have to come from a cluster ip.\
+\
+Let's change that by doing ``kubectl edit services nginxopen``. Change type: ClusterIP to NodePort. Now we must access it using the Node IP address that's running the service.
+
+## Storage
+
