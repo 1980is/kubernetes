@@ -23,16 +23,29 @@ Run the application: ``kubectl create -f armann.yaml``
 ## Kubectl Commands
 
 ``kubectl get all`` \
-See namespaces:``kubectrl get ns`` \
-See labels for resources: ``kubectl get all --show-labels`` \
-``kubectl get endpoints``
-Use a specific label go the specific information about an app: ``kubectl get all --selector app=nginxopen`` \
-Show available resources: ``kubectl api-resources`` \
+``kubectl describe pod/oreilly`` \
+``kubectl get endpoints`` \
 ``kubectl describe svc nginxopen``
-Show versions: ``kubectl api-versions`` \
+Show all field available: ``kubectl explain --recursive <resource>``
+
+**Namespaces:** \
+``kubectrl get ns`` \
+``kubectl -- create namespace kcna``
+
+**Labels:** \
+See labels for resources: ``kubectl get all --show-labels`` \
+See labels for pods: ``kubectl get pods --show-labels``
+Use a specific label go the specific information about an app: ``kubectl get all --selector app=nginxopen`` \
+Label a pod named oreilly: ``kubectl label pods oreilly production=yes`` \
+``kubectl get pods -l production=yes``
+
+**API:** \
+Show versions: ``kubectl api-versions``
+
+**Resources:** \
 Get more information about resource properties: ``kubectl explain <resource>`` \
 Show fields in the resource spec: ``kubectl explain <resource>.spec`` \
-Show all field available: ``kubectl explain --recursive <resource>``
+Show available resources: ``kubectl api-resources`` \
 
 ## Application Resources
 
@@ -99,3 +112,7 @@ Let's change that by doing ``kubectl edit services nginxopen``. Change type: Clu
 
 ## Storage
 
+## Service Mesh
+
+A service mesh is a dedicated infrastructure layer for making communication between services safe, observable, and reliable.
+A service mesh is a special layer for handling service-to-service communication. The service here is typically a microservice running in a container orchestrated by Kubernetes.
