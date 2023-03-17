@@ -2,6 +2,8 @@
 
 ## General Info
 
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
 Get bash completion for kubectl: ``source <(kubectl completion bash)`` \
 Get help: ``kubectl explain pod``and ``kubectl explain pod.spec`` and ``kubectl explain --recursive pod.spec``This is a tree shape hierachy of all the resources that are available.
 
@@ -23,6 +25,7 @@ Run the application: ``kubectl create -f armann.yaml``
 ## Kubectl Commands
 
 ``kubectl get all`` \
+``kubectl get pods -o wide``
 ``kubectl describe pod/oreilly`` \
 ``kubectl get endpoints`` \
 ``kubectl describe svc nginxopen``
@@ -72,7 +75,7 @@ To scale the number of nodes in a cluster, add the new node using ``kubeadm join
 
 ### Autoscaling
 
-Install the metrics server: ``kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml``\
+Install the metrics server: ``kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml``
 \
 ``kubectl edit deploy -n kube-system metrics-server`` \
 You need to add this line to the "containers" - args:
@@ -115,4 +118,7 @@ Let's change that by doing ``kubectl edit services nginxopen``. Change type: Clu
 ## Service Mesh
 
 A service mesh is a dedicated infrastructure layer for making communication between services safe, observable, and reliable.
-A service mesh is a special layer for handling service-to-service communication. The service here is typically a microservice running in a container orchestrated by Kubernetes.
+A service mesh is a special layer for handling service-to-service communication. The service here is typically a microservice running in a container orchestrated by Kubernetes. The proxies in a service mesh form the data plane. This is where networking rules are implemented and shape the traffic flow.
+These rules are managed centrally in the control plane of the service mesh. This is where you define how traffic flows from service A to service B and what configuration should be applied to the proxies.
+
+So instead of writing code and installing libraries, you just write a config file where you tell the service mesh that service A and service B should always communicate encrypted. The config is then uploaded to the control plane and distributed to the data plane to enforce the new rule.
