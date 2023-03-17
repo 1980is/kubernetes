@@ -25,7 +25,7 @@ Run the application: ``kubectl create -f armann.yaml``
 ## Kubectl Commands
 
 ``kubectl get all`` \
-``kubectl get pods -o wide``
+``kubectl get pods -o wide`` \
 ``kubectl describe pod/oreilly`` \
 ``kubectl get endpoints`` \
 ``kubectl describe svc nginxopen``
